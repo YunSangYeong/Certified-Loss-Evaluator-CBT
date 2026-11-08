@@ -1,0 +1,2 @@
+id,subject,topic,question,answer,explanation,difficulty,year,session,type,sourceUrl,verificationStatus,reviewNote,version,rights,choice1,choice2,choice3,choice4,choice5
+LOCAL-EXAMPLE,재배학 및 원예작물학,재배·원예 기초,사용자가 작성할 독립 문항의 본문을 입력하세요.,5,식물은 광합성의 탄소고정 과정에서 이산화탄소의 탄소를 유기물 합성에 이용한다.,하,,,original,https://github.com/YunSangYeong/Certified-Loss-Evaluator-CBT/blob/main/scripts/author_bank.py,pending,양식 예제: 사용 전 본문·정답·근거를 검토하세요.,main,자체 제작 원고 CC BY 4.0; 작성 위치는 외부 정답 근거가 아님.,산소,질소,수소,헬륨,이산화탄소

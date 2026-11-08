@@ -1,0 +1,26 @@
+[
+  {
+    "id": "LOCAL-EXAMPLE",
+    "subject": "재배학 및 원예작물학",
+    "topic": "재배·원예 기초",
+    "question": "사용자가 작성할 독립 문항의 본문을 입력하세요.",
+    "choices": [
+      "산소",
+      "질소",
+      "수소",
+      "헬륨",
+      "이산화탄소"
+    ],
+    "answer": 5,
+    "explanation": "식물은 광합성의 탄소고정 과정에서 이산화탄소의 탄소를 유기물 합성에 이용한다.",
+    "difficulty": "하",
+    "year": null,
+    "session": null,
+    "type": "original",
+    "sourceUrl": "https://github.com/YunSangYeong/Certified-Loss-Evaluator-CBT/blob/main/scripts/author_bank.py",
+    "verificationStatus": "pending",
+    "reviewNote": "양식 예제: 사용 전 본문·정답·근거를 검토하세요.",
+    "version": "main",
+    "rights": "자체 제작 원고 CC BY 4.0; 작성 위치는 외부 정답 근거가 아님."
+  }
+]
