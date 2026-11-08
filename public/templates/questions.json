@@ -1,0 +1,26 @@
+[
+  {
+    "id": "LOCAL-EXAMPLE",
+    "subject": "재배학 및 원예작물학",
+    "topic": "재배·원예 기초",
+    "question": "사용자가 작성할 독립 문항의 본문을 입력하세요.",
+    "choices": [
+      "호흡과 품질 저하 속도를 낮추기 위해",
+      "모든 품목을 무조건 동결하기 위해",
+      "수확 후 광합성을 무한 증가",
+      "수분을 항상 0으로 만들기 위해",
+      "숙성을 반드시 끝내기 위해"
+    ],
+    "answer": 1,
+    "explanation": "적절한 저온은 호흡과 품질 저하를 늦추지만 품목별 저온장해 가능성을 고려해 저장온도를 선택해야 한다.",
+    "difficulty": "하",
+    "year": null,
+    "session": null,
+    "type": "original",
+    "sourceUrl": "https://github.com/YunSangYeong/Certified-Loss-Evaluator-CBT/blob/main/scripts/author_bank.py",
+    "verificationStatus": "pending",
+    "reviewNote": "양식 예제: 사용 전 본문·정답·근거를 검토하세요.",
+    "version": "main",
+    "rights": "자체 제작 원고 CC BY 4.0; 작성 위치는 외부 정답 근거가 아님."
+  }
+]
