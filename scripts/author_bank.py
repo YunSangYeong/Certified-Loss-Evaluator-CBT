@@ -86,9 +86,12 @@ for si,block in enumerate(raw):
   q,correct,*rest=line.split('|'); wrong=rest[:4]; explanation=rest[4]
   choices=[correct,*wrong]; shift=i%5; choices=choices[shift:]+choices[:shift]
   bank.append(dict(id=f'CLE-{si+1}-{i:03}',subject=subjects[si],topic=['보험 기초·계약','재해보험 조사·근거 확인','재배·원예 기초'][si],question=q,choices=choices,answer=choices.index(correct)+1,explanation=explanation,difficulty='하',year=None,session=None,type='original',sourceUrl='https://github.com/YunSangYeong/Certified-Loss-Evaluator-CBT/blob/main/scripts/author_bank.py',verificationStatus='reviewed' if si==2 else 'pending',reviewNote='AI 일반 지식 기반 자체 작성. 문장·단일 정답·선택지 내부 검토. 공식 출제기준 대조 및 외부 전문가 검수 미실시.' if si==2 else 'AI 일반 지식 기반 초안. 현행 법령·공식 자료 접근 403으로 법령 대조 불가. 학습 은행 제외.',version='main',rights='자체 제작 원고 CC BY 4.0; 작성 위치는 외부 정답 근거가 아님.'))
+from expanded_bank import expanded
+bank,drafts=expanded(bank)
 p=Path(__file__).resolve().parents[1]
+(p/'src/data/drafts.json').write_text(json.dumps(drafts,ensure_ascii=False,indent=2)+'\n')
 (p/'src/data/questions.json').write_text(json.dumps(bank,ensure_ascii=False,indent=2)+'\n')
-example={**bank[-1], 'id':'LOCAL-EXAMPLE','question':'사용자가 작성할 독립 문항의 본문을 입력하세요.','verificationStatus':'pending','reviewNote':'양식 예제: 사용 전 본문·정답·근거를 검토하세요.'}
+example={**bank[0], 'id':'LOCAL-EXAMPLE','question':'사용자가 작성할 독립 문항의 본문을 입력하세요.','verificationStatus':'pending','reviewNote':'양식 예제: 사용 전 본문·정답·근거를 검토하세요.'}
 (p/'public/templates/questions.json').write_text(json.dumps([example],ensure_ascii=False,indent=2)+'\n')
 csv_example={k:v for k,v in example.items() if k!='choices'}
 for i,v in enumerate(example['choices'],1): csv_example[f'choice{i}']=v

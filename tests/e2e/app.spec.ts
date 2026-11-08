@@ -3,9 +3,9 @@ import bank from '../../src/data/questions.json' with {type:'json'};
 const key='loss-evaluator-cbt:v1';
 const read=(page:Page)=>page.evaluate(k=>JSON.parse(localStorage.getItem(k)!),key);
 async function nav(page:Page,label:string){if(await page.getByRole('button',{name:'메뉴 열기'}).isVisible())await page.getByRole('button',{name:'메뉴 열기'}).click();await page.getByRole('navigation').getByRole('button',{name:label,exact:true}).click();}
-async function seed(page:Page){await page.goto('');await page.evaluate(({key,bank})=>{const s=JSON.parse(localStorage.getItem(key)!);s.imported=bank.map(q=>({...q,id:`TEST-${q.id}`,verificationStatus:'reviewed'}));localStorage.setItem(key,JSON.stringify(s));},{key,bank});await page.reload();}
+async function seed(page:Page){await page.goto('');await page.evaluate(({key,bank})=>{const s=JSON.parse(localStorage.getItem(key)!);s.imported=['상법 보험편','농어업재해보험법령','재배학 및 원예작물학'].flatMap((subject,i)=>bank.slice(0,25).map(q=>({...q,subject,id:`TEST-${i}-${q.id}`,verificationStatus:'reviewed'})));localStorage.setItem(key,JSON.stringify(s));},{key,bank});await page.reload();}
 const choices=(p:Page)=>p.getByRole('group',{name:'답안 선택'}).getByRole('button');
-test('기본 은행: 25 reviewed, pending excluded, no selector or top banner, responsive',async({page})=>{
+test('기본 은행: 1000 reviewed, law drafts excluded, no selector or top banner, responsive',async({page})=>{
  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('');await expect(page.getByRole('heading',{name:'손해평가사 1차 CBT',exact:true})).toBeVisible();await expect(page.getByRole('button',{name:'모의시험 시작하기',exact:true})).toBeDisabled();await expect(page.getByLabel('학습 기준')).toHaveCount(0);await expect(page.locator('.criteria-note')).toHaveCount(0);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);await page.getByRole('button',{name:'문제풀이 시작하기',exact:true}).click();const s=await read(page);expect(bank.find(q=>q.id===s.practice.currentId)?.verificationStatus).toBe('reviewed');await expect(choices(page)).toHaveCount(5);await choices(page).first().click();await expect(page.locator('.explanation')).toBeVisible();expect(errors).toEqual([]);
 });
 test('75 question exam: answer changes, restore, cutoff grading, review and wrong-only retry (fixtures)',async({page})=>{
